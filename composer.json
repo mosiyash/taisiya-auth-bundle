@@ -1,0 +1,24 @@
+{
+  "name": "taisiya/auth-bundle",
+  "license": "MIT",
+  "type": "taisiya-bundle",
+  "description": "The \"Auth Bundle\".",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Taisiya\\AuthBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Taisiya\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "taisiya/core-bundle": "dev-master"
+  },
+  "require-dev": {
+    "composer/composer": "*"
+  }
+}
