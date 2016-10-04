@@ -24,14 +24,14 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "Taisiya\\CoreBundle\\Composer\\ScriptHandler::copySettings",
-      "Taisiya\\CoreBundle\\Composer\\ScriptHandler::mergeSettings",
-      "Taisiya\\CoreBundle\\Composer\\ScriptHandler::createPhinxConfigFile"
+      "Taisiya\\AuthBundle\\Composer\\DevScriptHandler::copySettings",
+      "Taisiya\\AuthBundle\\Composer\\DevScriptHandler::mergeSettings",
+      "Taisiya\\AuthBundle\\Composer\\DevScriptHandler::createPhinxConfigFile"
     ],
     "post-update-cmd": [
-      "Taisiya\\CoreBundle\\Composer\\ScriptHandler::copySettings",
-      "Taisiya\\CoreBundle\\Composer\\ScriptHandler::mergeSettings",
-      "Taisiya\\CoreBundle\\Composer\\ScriptHandler::createPhinxConfigFile"
+      "Taisiya\\AuthBundle\\Composer\\DevScriptHandler::copySettings",
+      "Taisiya\\AuthBundle\\Composer\\DevScriptHandler::mergeSettings",
+      "Taisiya\\AuthBundle\\Composer\\DevScriptHandler::createPhinxConfigFile"
     ]
   }
 }
