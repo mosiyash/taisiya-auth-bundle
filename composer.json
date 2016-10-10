@@ -16,7 +16,7 @@
     }
   },
   "require": {
-    "taisiya/core-bundle": "dev-master",
+    "taisiya/propel-bundle": "dev-master",
     "aura/auth": "^2.0"
   },
   "require-dev": {
@@ -26,12 +26,14 @@
     "post-install-cmd": [
       "Taisiya\\AuthBundle\\Composer\\ScriptHandler::copySettings",
       "Taisiya\\AuthBundle\\Composer\\ScriptHandler::mergeSettings",
-      "Taisiya\\AuthBundle\\Composer\\ScriptHandler::createPhinxConfigFile"
+      "Taisiya\\AuthBundle\\Composer\\ScriptHandler::createPhinxConfigFile",
+      "Taisiya\\AuthBundle\\Composer\\ScriptHandler::buildPropelSchema"
     ],
     "post-update-cmd": [
       "Taisiya\\AuthBundle\\Composer\\ScriptHandler::copySettings",
       "Taisiya\\AuthBundle\\Composer\\ScriptHandler::mergeSettings",
-      "Taisiya\\AuthBundle\\Composer\\ScriptHandler::createPhinxConfigFile"
+      "Taisiya\\AuthBundle\\Composer\\ScriptHandler::createPhinxConfigFile",
+      "Taisiya\\AuthBundle\\Composer\\ScriptHandler::buildPropelSchema"
     ]
   }
 }
