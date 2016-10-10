@@ -23,16 +23,16 @@ class BuildPropelSchemaSubscriber extends AbstractBuildPropelSchemaSubscriber
             ->addTableIfNotExists(TableFactory::create(AccountTable::class))
             ->getTable(AccountTable::NAME);
 
-        $idColumn = $accountTable
+        $accountTable
             ->addColumnIfNotExists(ColumnFactory::create(AccountTable\IdColumn::class))
             ->getColumn(AccountTable\IdColumn::NAME)
             ->setAutoIncrement(true);
 
-        $usernameColumn = $accountTable
+        $accountTable
             ->addColumnIfNotExists(ColumnFactory::create(AccountTable\UsernameColumn::class))
             ->getColumn(AccountTable\UsernameColumn::NAME);
 
-        $passwordColumn = $accountTable
+        $accountTable
             ->addColumnIfNotExists(ColumnFactory::create(AccountTable\PasswordColumn::class))
             ->getColumn(AccountTable\PasswordColumn::NAME);
     }
