@@ -4,6 +4,7 @@ namespace Taisiya\AuthBundle\Composer\Event;
 
 use Composer\EventDispatcher\Event;
 use Taisiya\AuthBundle\Database\AccountTable;
+use Taisiya\AuthBundle\Database\UserinfoTable;
 use Taisiya\PropelBundle\Composer\Event\AbstractBuildPropelSchemaSubscriber;
 use Taisiya\PropelBundle\Database\ColumnFactory;
 use Taisiya\PropelBundle\Database\DefaultDatabase;
@@ -35,5 +36,21 @@ class BuildPropelSchemaSubscriber extends AbstractBuildPropelSchemaSubscriber
         $accountTable
             ->addColumnIfNotExists(ColumnFactory::create(AccountTable\PasswordColumn::class))
             ->getColumn(AccountTable\PasswordColumn::NAME);
+
+        $userinfoTable = $database
+            ->addTableIfNotExists(TableFactory::create(UserinfoTable::class))
+            ->getTable(UserinfoTable::NAME);
+
+        $userinfoTable
+            ->addColumnIfNotExists(ColumnFactory::create(UserinfoTable\AccountIdColumn::class))
+            ->getColumn(UserinfoTable\AccountIdColumn::NAME);
+
+        $userinfoTable
+            ->addColumnIfNotExists(ColumnFactory::create(UserinfoTable\EmailColumn::class))
+            ->getColumn(UserinfoTable\EmailColumn::NAME);
+
+        $userinfoTable
+            ->addColumnIfNotExists(ColumnFactory::create(UserinfoTable\FullnameColumn::class))
+            ->getColumn(UserinfoTable\FullnameColumn::NAME);
     }
 }
