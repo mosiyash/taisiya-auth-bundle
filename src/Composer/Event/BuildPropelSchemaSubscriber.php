@@ -3,57 +3,28 @@
 namespace Taisiya\AuthBundle\Composer\Event;
 
 use Composer\EventDispatcher\Event;
-use Taisiya\AuthBundle\Database\AccountTable;
-use Taisiya\AuthBundle\Database\UserinfoTable;
-use Taisiya\PropelBundle\Database\ColumnFactory;
+use Taisiya\AuthBundle\Database\DefaultDatabase\AccountTable;
 use Taisiya\PropelBundle\Database\DefaultDatabase;
 use Taisiya\PropelBundle\Database\Schema;
-use Taisiya\PropelBundle\Database\TableFactory;
 
 class BuildPropelSchemaSubscriber extends \Taisiya\PropelBundle\Composer\Event\BuildPropelSchemaSubscriber
 {
     public function buildPropelSchema(Event $event): void
     {
+        $this->buildDefaultDatabaseSchema($event);
+    }
+
+    private function buildDefaultDatabaseSchema(Event $event)
+    {
         /** @var Schema $schema */
         $schema = $event->getArguments()['schema'];
 
-        if (!$schema->hasDatabase(DefaultDatabase::getName())) {
-            $schema->addDatabase(new DefaultDatabase());
-        }
+        $database = $schema
+            ->createDatabaseIfNotExists(new DefaultDatabase())
+            ->getDatabase(DefaultDatabase::getName());
 
-
-
-//        $accountTable = $database
-//            ->addTableIfNotExists(TableFactory::create(AccountTable::class))
-//            ->getTable(AccountTable::NAME);
-//
-//        $accountTable
-//            ->addColumnIfNotExists(ColumnFactory::create(AccountTable\IdColumn::class))
-//            ->getColumn(AccountTable\IdColumn::NAME)
-//            ->setAutoIncrement(true);
-//
-//        $accountTable
-//            ->addColumnIfNotExists(ColumnFactory::create(AccountTable\UsernameColumn::class))
-//            ->getColumn(AccountTable\UsernameColumn::NAME);
-//
-//        $accountTable
-//            ->addColumnIfNotExists(ColumnFactory::create(AccountTable\PasswordColumn::class))
-//            ->getColumn(AccountTable\PasswordColumn::NAME);
-//
-//        $userinfoTable = $database
-//            ->addTableIfNotExists(TableFactory::create(UserinfoTable::class))
-//            ->getTable(UserinfoTable::NAME);
-//
-//        $userinfoTable
-//            ->addColumnIfNotExists(ColumnFactory::create(UserinfoTable\AccountIdColumn::class))
-//            ->getColumn(UserinfoTable\AccountIdColumn::NAME);
-//
-//        $userinfoTable
-//            ->addColumnIfNotExists(ColumnFactory::create(UserinfoTable\EmailColumn::class))
-//            ->getColumn(UserinfoTable\EmailColumn::NAME);
-//
-//        $userinfoTable
-//            ->addColumnIfNotExists(ColumnFactory::create(UserinfoTable\FullnameColumn::class))
-//            ->getColumn(UserinfoTable\FullnameColumn::NAME);
+        $accountTable = $database
+            ->createTableIfNotExists(new AccountTable())
+            ->getTable(AccountTable::getName());
     }
 }
