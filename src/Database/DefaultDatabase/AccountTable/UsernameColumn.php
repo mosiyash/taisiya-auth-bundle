@@ -1,6 +1,6 @@
 <?php
 
-namespace Taisiya\AuthBundle\Database\AccountTable;
+namespace Taisiya\AuthBundle\Database\DefaultDatabase\AccountTable;
 
 use Taisiya\PropelBundle\Database\Column;
 

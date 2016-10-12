@@ -13,4 +13,9 @@ class IdColumn extends Column
     {
         return 'id';
     }
+
+    public function __construct()
+    {
+        $this->setAutoIncrement(true);
+    }
 }
