@@ -4,7 +4,7 @@ namespace Taisiya\AuthBundle\Database\DefaultDatabase;
 
 use Taisiya\PropelBundle\Database\Table;
 
-final class UserinfoTable extends Table
+final class UserInfoTable extends Table
 {
     /**
      * {@inheritdoc}

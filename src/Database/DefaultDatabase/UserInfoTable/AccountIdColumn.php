@@ -1,6 +1,6 @@
 <?php
 
-namespace Taisiya\AuthBundle\Database\DefaultDatabase\UserinfoTable;
+namespace Taisiya\AuthBundle\Database\DefaultDatabase\UserInfoTable;
 
 use Taisiya\PropelBundle\Database\Column;
 
