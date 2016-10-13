@@ -20,22 +20,10 @@ class BuildPropelSchemaSubscriber extends \Taisiya\PropelBundle\Composer\Event\B
         /** @var Schema $schema */
         $schema = $event->getArguments()['schema'];
 
-        $database = $schema
+        $schema
             ->createDatabaseIfNotExists(new DefaultDatabase())
-            ->getDatabase(DefaultDatabase::getName());
-
-        $database
+            ->getDatabase(DefaultDatabase::getName())
             ->createTableIfNotExists(new AccountTable())
-            ->getTable(AccountTable::getName())
-            ->createColumnIfNotExists(new AccountTable\IdColumn())
-            ->createColumnIfNotExists(new AccountTable\UsernameColumn())
-            ->createColumnIfNotExists(new AccountTable\PasswordColumn());
-
-        $database
-            ->createTableIfNotExists(new UserInfoTable())
-            ->getTable(UserInfoTable::getName())
-            ->createColumnIfNotExists(new UserInfoTable\AccountIdColumn())
-            ->createColumnIfNotExists(new UserInfoTable\EmailColumn())
-            ->createColumnIfNotExists(new UserInfoTable\FullnameColumn());
+            ->createTableIfNotExists(new UserInfoTable());
     }
 }
