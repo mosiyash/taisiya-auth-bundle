@@ -16,4 +16,3 @@ class UsernameUnique extends Unique
         $this->addColumnIfNotExists(new UsernameColumn());
     }
 }
-
